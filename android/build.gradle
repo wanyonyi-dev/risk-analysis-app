@@ -1,0 +1,68 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+buildscript {
+    ext.kotlin_version = '2.0.0'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    subprojects {
+        afterEvaluate { project ->
+            if (project.hasProperty('android')) {
+                project.android {
+                    // Set namespace
+                    if (!project.android.hasProperty('namespace') || project.android.namespace == null) {
+                        namespace = project.group ?: "com.example.${project.name}"
+                    }
+
+                    // Set compileSdkVersion to 34 for all modules
+                    compileSdkVersion 34
+
+                    defaultConfig {
+                        minSdkVersion 23
+                        targetSdkVersion 34
+                    }
+
+                    compileOptions {
+                        sourceCompatibility JavaVersion.VERSION_17
+                        targetCompatibility JavaVersion.VERSION_17
+                    }
+                    tasks.withType(KotlinCompile).configureEach {
+                        kotlinOptions {
+                            jvmTarget = "17"
+                        }
+                    }
+                    java {
+                        toolchain {
+                            languageVersion = JavaLanguageVersion.of(17)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

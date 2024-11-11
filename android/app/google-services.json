@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "876986450363",
+    "project_id": "risk-anlysis",
+    "storage_bucket": "risk-anlysis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876986450363:android:9c179a49492a25344c449e",
+        "android_client_info": {
+          "package_name": "com.riskanalysis.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPvFDthdIGItIJEozQQG6SoVJ1IOJis7k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876986450363:android:ffa34a9b158fa5f24c449e",
+        "android_client_info": {
+          "package_name": "com.riskanalysis.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPvFDthdIGItIJEozQQG6SoVJ1IOJis7k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
